@@ -607,8 +607,7 @@ public class LifecycleMappingFactory {
             for(PluginExecutionMetadata executionMetadata : entry.getValue()) {
               if(isPrimaryMapping(executionMetadata, sorter)) {
                 if(primaryMetadata != null) {
-                  primaryMetadata = null;
-                  throw new DuplicateMappingException();
+                  throw new DuplicateMappingException(primaryMetadata.getSource(), executionMetadata.getSource());
                 }
                 primaryMetadata = executionMetadata;
               }
